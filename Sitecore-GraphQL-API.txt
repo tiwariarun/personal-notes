@@ -1,0 +1,33 @@
+http://my.sitecore.domain/sitecore/api/graph/items/master
+http://my.sitecore.domain/sitecore/api/graph/items/master/ui
+
+Log in to Sitecore (the example endpoint requires authentication).
+
+Go to /sitecore/api/graph/items/master/ui. This UI lets you query items and templates in the Master database.
+
+Click the Docs link to browse the type schema. 
+
+Write a GraphQL query using GraphiQL code completion functionality (pressing CTRL-Space triggers it manually). The following query, for example, retrieves an item, its children, and its template definition in a single query:
+
+{
+  item(path: "/sitecore/templates") {
+    id
+    path
+    children {
+      name
+    }
+    template {
+       fields {
+        name
+      }
+    }
+  }
+}
+
+
+
+You can disable each of these extra endpoint features with config patches for the web.config file: 
+
+<enableSchemaExport role:require="ContentDelivery">false</enableSchemaExport>
+<enableStats role:require="ContentDelivery">false</enableStats>
+<enableCacheStats role:require="ContentDelivery">false</enableCacheStats>
