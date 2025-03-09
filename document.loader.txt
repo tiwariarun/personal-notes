@@ -32,6 +32,10 @@ embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 
   from langchain_core.vectorstores import InMemoryVectorStore
   vector_store = InMemoryVectorStore(embeddings)
+
+#safdsdg
+!pip install pypdf
+from langchain.document_loaders import PyPDFLoaders
   
 
   
