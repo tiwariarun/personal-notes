@@ -36,6 +36,8 @@ embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 #safdsdg
 !pip install pypdf
 from langchain.document_loaders import PyPDFLoaders
+
+
   
 
   
