@@ -2,4 +2,18 @@ npm install -g @angular/cli
 ng new first-angular-app
 ng serve
 <h1>{{title}}</h1>
+ng generate component header
+selector:
+standalone:
+template:
+style:
+
+component files:
+
+
+.component,.css
+.component.html
+.component.spec.ts
+.component.ts
+
 
