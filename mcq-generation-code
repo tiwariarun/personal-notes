@@ -32,3 +32,64 @@ def generate_mcq(topic):
 topic = "Python Programming"
 mcq = generate_mcq(topic)
 print(mcq)
+
+
+import openai
+
+# Function to generate MCQs from the given text
+def generate_mcqs_from_text(text):
+    openai.api_key = 'your-api-key'  # Replace with your OpenAI API key
+    
+    # Prompt to generate multiple-choice questions based on the text
+    prompt = f"""
+    Based on the following text, generate 3 multiple-choice questions (MCQs). 
+    Provide 4 answer options for each question and identify the correct answer.
+    Format the output like this:
+
+    Question 1:
+    <Question>
+    a) <Option 1>
+    b) <Option 2>
+    c) <Option 3>
+    d) <Option 4>
+    Correct answer: <a/b/c/d>
+
+    Question 2:
+    <Question>
+    a) <Option 1>
+    b) <Option 2>
+    c) <Option 3>
+    d) <Option 4>
+    Correct answer: <a/b/c/d>
+
+    Question 3:
+    <Question>
+    a) <Option 1>
+    b) <Option 2>
+    c) <Option 3>
+    d) <Option 4>
+    Correct answer: <a/b/c/d>
+
+    Text: {text}
+    """
+    
+    response = openai.Completion.create(
+        engine="text-davinci-003",  # Or use "gpt-4" if available for your plan
+        prompt=prompt,
+        max_tokens=400,
+        n=1,
+        stop=None,
+        temperature=0.7
+    )
+
+    # Parse and return the response
+    mcqs = response.choices[0].text.strip()
+    return mcqs
+
+# Example usage
+text_input = """
+Python is a high-level, interpreted programming language. It was created by Guido van Rossum and was first released in 1991. Python is known for its simple syntax, making it easy to learn and use. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming. Python is widely used in web development, data analysis, artificial intelligence, scientific computing, and more.
+"""
+
+mcqs = generate_mcqs_from_text(text_input)
+print(mcqs)
