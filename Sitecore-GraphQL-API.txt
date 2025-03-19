@@ -30,6 +30,7 @@ You can disable each of these extra endpoint features with config patches for th
 
 <enableSchemaExport role:require="ContentDelivery">false</enableSchemaExport>
 <enableStats role:require="ContentDelivery">false</enableStats>
+
 <enableCacheStats role:require="ContentDelivery">false</enableCacheStats>
 
 
